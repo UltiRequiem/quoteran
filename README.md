@@ -19,3 +19,7 @@ quoteran
 ### License
 
 [MIT](./LICENSE)
+
+### Alternative
+
+I also developed this in Nodejs: [UltiRequiem/ranmess](https://github.com/UltiRequiem/ranmess)
