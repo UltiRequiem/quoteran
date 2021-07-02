@@ -23,3 +23,8 @@ quoteran
 ### Alternative
 
 I also developed this in Nodejs: [UltiRequiem/ranmess](https://github.com/UltiRequiem/ranmess)
+
+![Benchmark Screenshot](./assets/benchmark.png)
+
+The version written in Nodejs is significantly faster,
+and it was even easier to develop and publish than this.
