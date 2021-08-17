@@ -4,7 +4,7 @@ Get random quotes in terminal.
 
 This project fetch the [Quotable.io API](https://api.quotable.io/random).
 
-![Screenshot](./assets/screenshot.png)
+![Screenshot](./assets/new_screenshot.png)
 
 ## Install
 
