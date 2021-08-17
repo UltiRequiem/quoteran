@@ -2,13 +2,26 @@
 
 Get random quotes in terminal.
 
-This project makes Fetch of the [Quotable.io API](https://api.quotable.io/random).
+This project fetch the [Quotable.io API](https://api.quotable.io/random).
 
 ![Screenshot](./assets/screenshot.png)
 
 ## Install
 
-`pip install quoteran`
+You can install [Quoteran](https://pypi.org/project/quteran) from PyPI:
+
+```bash
+pip install quoteran
+```
+
+To get the last version:
+
+```bash
+pip install git+https:/github.com/UltiRequiem/quoteran
+```
+
+If you use Linux, you may need to install this with sudo to
+be able to access the command throughout your system.
 
 ## Usage
 
@@ -18,7 +31,7 @@ quoteran
 
 ### License
 
-[MIT](./LICENSE)
+This project is Licensed under the [MIT](./LICENSE) License.
 
 ### Alternative
 
