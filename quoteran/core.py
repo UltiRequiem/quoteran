@@ -10,6 +10,6 @@ def fetch_and_parse(api: str) -> dict:
 
 
 def main() -> None:
-    DATA = fetch_and_parse(API)
-    cprint(DATA["content"], cyan)
-    cprint(f" - {DATA['author']}")
+    data = fetch_and_parse(API)
+    cprint(data["content"], cyan)
+    cprint(f" - {data['author']}")
