@@ -1,5 +1,7 @@
 import requests
 
+from .ui import cprint, cyan
+
 API = "https://api.quotable.io/random"
 
 
@@ -9,5 +11,5 @@ def fetch_and_parse(api: str) -> dict:
 
 def main() -> None:
     DATA = fetch_and_parse(API)
-    print(DATA["content"])
-    print(f" - {DATA['author']}")
+    cprint(DATA["content"], cyan)
+    cprint(f" - {DATA['author']}")
