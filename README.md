@@ -12,9 +12,7 @@ Get random quotes in terminal.
 
 This project fetch the [Quotable.io API](https://api.quotable.io/random).
 
-![Screenshot](./assets/new_screenshot.png)
-
-![quoteran + lolcat](./assets/lolcat.png)
+![Screenshot](https://raw.githubusercontent.com/UltiRequiem/quoteran/main/assets/new_screenshot.png)
 
 ## Install
 
@@ -47,7 +45,7 @@ This project is Licensed under the [MIT](./LICENSE) License.
 
 I also developed this in Nodejs: [UltiRequiem/ranmess](https://github.com/UltiRequiem/ranmess)
 
-![Benchmark Screenshot](./assets/benchmark.png)
+![Benchmark Screenshot](https://raw.githubusercontent.com/UltiRequiem/quoteran/main/assets/benchmark.png)
 
 The version written in Nodejs is significantly faster,
 and it was even easier to develop and publish than this.
