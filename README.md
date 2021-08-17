@@ -14,6 +14,8 @@ This project fetch the [Quotable.io API](https://api.quotable.io/random).
 
 ![Screenshot](./assets/new_screenshot.png)
 
+![quoteran + lolcat](./assets/lolcat.png)
+
 ## Install
 
 You can install [Quoteran](https://pypi.org/project/quteran) from PyPI:
