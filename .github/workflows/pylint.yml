@@ -16,3 +16,5 @@ jobs:
           poetry install
       - name: Run pylint
         run: pylint quoteran
+      - name: Run the tests
+        run: poetry run python -m unittest discover -s tests -t .

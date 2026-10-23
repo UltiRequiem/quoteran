@@ -10,7 +10,18 @@
 
 Get random quotes in terminal.
 
-This project fetch the [Quotable.io API](https://api.quotable.io/random).
+This project fetches random quotes from a [Quotable](https://github.com/lukePeavey/quotable) API server.
+
+## Use your own API server
+
+The public `api.quotable.io` host is no longer available, so point quoteran at a Quotable server you run (the
+project is open source). The base URL is read, in this order, from:
+
+1. the `--api-url` flag,
+2. the `QUOTABLE_API_URL` environment variable,
+3. the public default, `https://api.quotable.io`.
+
+Give the server address only, without `/random` (a path prefix such as `https://example.com/quotes-api` is fine).
 
 ![Screenshot](https://raw.githubusercontent.com/UltiRequiem/quoteran/main/assets/new_screenshot.png)
 
@@ -34,7 +45,8 @@ be able to access the command throughout your system.
 ## Usage
 
 ```bash
-quoteran
+QUOTABLE_API_URL=https://quotes.example.com quoteran
+quoteran --api-url https://quotes.example.com
 ```
 
 ### License
