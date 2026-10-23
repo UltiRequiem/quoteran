@@ -1,12 +1,8 @@
 # quoteran
 
-![CodeQL](https://github.com/UltiRequiem/quoteran/workflows/CodeQL/badge.svg)
 ![Pylint](https://github.com/UltiRequiem/quoteran/workflows/Pylint/badge.svg)
 [![Code Style](https://img.shields.io/badge/Code%20Style-Black-000000.svg)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/quoteran)](https://pypi.org/project/quoteran)
-![Repo Size](https://img.shields.io/github/repo-size/ultirequiem/quoteran?style=flat-square&label=Repo)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![Lines of Code](https://img.shields.io/tokei/lines/github.com/UltiRequiem/quoteran?color=blue&label=Total%20Lines)
 
 Get random quotes in terminal.
 
