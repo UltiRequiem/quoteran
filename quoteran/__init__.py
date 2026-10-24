@@ -1,7 +1,6 @@
 """
-This file tells Python that this is a submodule
+Random quotes on terminal.
 """
+from .core import __version__, main
 
-from .core import main
-
-__version__ = "1.1.0"
+__all__ = ["main", "__version__"]

@@ -1,6 +1,6 @@
 # quoteran
 
-![Pylint](https://github.com/UltiRequiem/quoteran/workflows/Pylint/badge.svg)
+[![CI](https://github.com/UltiRequiem/quoteran/actions/workflows/pylint.yml/badge.svg)](https://github.com/UltiRequiem/quoteran/actions/workflows/pylint.yml)
 [![Code Style](https://img.shields.io/badge/Code%20Style-Black-000000.svg)](https://github.com/psf/black)
 [![PyPi Version](https://img.shields.io/pypi/v/quoteran)](https://pypi.org/project/quoteran)
 
@@ -23,7 +23,7 @@ Give the server address only, without `/random` (a path prefix such as `https://
 
 ## Install
 
-You can install [Quoteran](https://pypi.org/project/quteran) from PyPI:
+You can install [Quoteran](https://pypi.org/project/quoteran) from PyPI:
 
 ```bash
 pip install quoteran
@@ -32,7 +32,7 @@ pip install quoteran
 To get the last version:
 
 ```bash
-pip install git+https:/github.com/UltiRequiem/quoteran
+pip install git+https://github.com/UltiRequiem/quoteran
 ```
 
 If you use Linux, you may need to install this with sudo to
@@ -43,6 +43,7 @@ be able to access the command throughout your system.
 ```bash
 QUOTABLE_API_URL=https://quotes.example.com quoteran
 quoteran --api-url https://quotes.example.com
+quoteran --version
 ```
 
 ### License

@@ -7,14 +7,20 @@ environment variable, then the public default.
 import argparse
 import os
 import sys
-from typing import List, Optional
+from importlib.metadata import PackageNotFoundError, version
+from typing import List, Optional, Tuple
 
 import requests
 
-from .ui import cprint, cyan
+from .ui import cprint, cyan, setup_colorama
 
 DEFAULT_API_URL = "https://api.quotable.io"
 API_URL_ENV = "QUOTABLE_API_URL"
+
+try:
+    __version__ = version("quoteran")
+except PackageNotFoundError:  # a source checkout that is not installed
+    __version__ = "0.0.0"
 
 # Kept for backwards compatibility: the full URL of the default random endpoint.
 API = DEFAULT_API_URL + "/random"
@@ -40,9 +46,19 @@ def fetch_and_parse(api: str) -> dict:
     return response.json()
 
 
+def parse_quote(data: object) -> Tuple[str, str]:
+    """Pull (content, author) out of a Quotable answer, or raise ValueError."""
+    if not isinstance(data, dict) or not all(
+        isinstance(data.get(key), str) for key in ("content", "author")
+    ):
+        raise ValueError(f"Unexpected answer from the server: {data!r}")
+    return data["content"], data["author"]
+
+
 def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
     """Read the command line."""
     parser = argparse.ArgumentParser(prog="quoteran", description="Random quotes on terminal.")
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument(
         "--api-url",
         help=f"base URL of a Quotable server (default: ${API_URL_ENV}, then {DEFAULT_API_URL})",
@@ -55,7 +71,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     args = parse_args(argv)
 
     try:
-        data = fetch_and_parse(random_quote_url(args.api_url))
+        content, author = parse_quote(fetch_and_parse(random_quote_url(args.api_url)))
     except (requests.RequestException, ValueError) as error:
         print(f"Could not get a quote from {get_base_url(args.api_url)}.", file=sys.stderr)
         print(
@@ -65,5 +81,6 @@ def main(argv: Optional[List[str]] = None) -> None:
         print(error, file=sys.stderr)
         sys.exit(1)
 
-    cprint(data["content"], cyan)
-    cprint(f" - {data['author']}")
+    setup_colorama()
+    cprint(content, cyan)
+    cprint(f" - {author}")
