@@ -1,5 +1,6 @@
-import sys
-
+"""
+Colored terminal output.
+"""
 import colorama
 
 cyan, red = (
@@ -10,10 +11,9 @@ cyan, red = (
 
 def setup_colorama() -> None:
     """
-    Execute init function of Colorama. This is not necessary in Linux or Darwin.
+    Make ANSI colors work on old Windows consoles. Does nothing elsewhere.
     """
-    if "win" in sys.platform:
-        colorama.init()
+    colorama.just_fix_windows_console()
 
 
 def cprint(

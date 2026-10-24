@@ -23,6 +23,9 @@ class QuoteHandler(BaseHTTPRequestHandler):
         if self.path == "/api/random":
             body = json.dumps({"content": "Be yourself.", "author": "Someone"}).encode()
             self.send_response(200)
+        elif self.path == "/broken/random":
+            body = json.dumps({"message": "not a quote"}).encode()
+            self.send_response(200)
         else:
             body = b"{}"
             self.send_response(404)
@@ -55,6 +58,18 @@ class BaseUrlTests(unittest.TestCase):
             core.random_quote_url("https://example.com/quotes-api/"),
             "https://example.com/quotes-api/random",
         )
+
+
+class ParseQuoteTests(unittest.TestCase):
+    """Only well formed answers are accepted."""
+
+    def test_valid(self):
+        self.assertEqual(core.parse_quote({"content": "a", "author": "b"}), ("a", "b"))
+
+    def test_invalid(self):
+        for data in ({"content": "a"}, {"content": 1, "author": "b"}, [], None):
+            with self.subTest(data=data), self.assertRaises(ValueError):
+                core.parse_quote(data)
 
 
 class MainTests(unittest.TestCase):
@@ -121,6 +136,19 @@ class MainTests(unittest.TestCase):
         _, _, code = self.run_main(["--api-url", self.url + "/missing"])
 
         self.assertEqual(code, 1)
+
+    def test_malformed_answer_exits(self):
+        base = self.url.replace("/api", "/broken")
+        _, err, code = self.run_main(["--api-url", base])
+
+        self.assertEqual(code, 1)
+        self.assertIn("Unexpected answer", err)
+
+    def test_version(self):
+        out, _, code = self.run_main(["--version"])
+
+        self.assertEqual(code, 0)
+        self.assertIn(core.__version__, out)
 
 
 if __name__ == "__main__":
