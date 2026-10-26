@@ -31,3 +31,13 @@ jobs:
 
       - name: Run the tests
         run: poetry run python -m unittest discover -s tests -t .
+
+  ci:
+    name: CI
+    if: always()
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require every job to pass
+        run: |
+          if [ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" = "true" ]; then exit 1; fi
